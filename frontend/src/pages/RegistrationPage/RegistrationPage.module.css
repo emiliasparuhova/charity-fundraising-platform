@@ -1,0 +1,308 @@
+.registrationContainer {
+display: flex;
+min-height: 100vh;
+}
+
+.registrationCard {
+flex: 1;
+display: flex;
+flex-direction: column;
+padding: 2rem;
+max-width: 600px;
+margin: 0 auto;
+margin-top: 11vh;
+}
+
+.cardHeader {
+text-align: center;
+margin-bottom: 2rem;
+}
+
+.pageTitle {
+font-size: 2rem;
+font-weight: 700;
+color: #111827;
+margin-bottom: 0.5rem;
+}
+
+.pageDescription {
+color: #6b7280;
+margin-bottom: 1.5rem;
+}
+
+.registrationForm {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.formGroup {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.formLabel {
+font-weight: 600;
+color: #374151;
+font-size: 0.875rem;
+}
+
+.inputWrapper {
+position: relative;
+}
+
+.formInput {
+width: 100%;
+padding: 0.75rem 1rem;
+padding-right: 2.5rem;
+border: 1px solid #d1d5db;
+border-radius: 8px;
+font-size: 1rem;
+transition: all 0.3s;
+background-color: #f9fafb;
+}
+
+.formInput:focus {
+border-color: var(--primary);
+outline: none;
+box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+background-color: white;
+}
+
+.inputIcon {
+position: absolute;
+right: 1rem;
+top: 50%;
+transform: translateY(-50%);
+color: #9ca3af;
+}
+
+.passwordToggle {
+position: absolute;
+right: 1rem;
+top: 50%;
+transform: translateY(-50%);
+background: none;
+border: none;
+cursor: pointer;
+font-size: 1rem;
+color: #6b7280;
+}
+
+.passwordStrength {
+display: flex;
+flex-direction: column;
+gap: 0.25rem;
+margin-top: 0.5rem;
+}
+
+.strengthMeter {
+height: 4px;
+background-color: #e5e7eb;
+border-radius: 2px;
+overflow: hidden;
+}
+
+.strengthIndicator {
+height: 100%;
+border-radius: 2px;
+transition: width 0.3s, background-color 0.3s;
+}
+
+.strengthText {
+font-size: 0.75rem;
+color: #6b7280;
+}
+
+.termsCheckbox {
+display: flex;
+align-items: flex-start;
+gap: 0.5rem;
+font-size: 0.875rem;
+color: #4b5563;
+}
+
+.termsCheckbox input {
+margin-top: 0.25rem;
+}
+
+.termsLink {
+color: var(--primary);
+text-decoration: none;
+}
+
+.termsLink:hover {
+text-decoration: underline;
+}
+
+.registerButton {
+padding: 0.875rem;
+background-color: var(--primary);
+color: white;
+border: none;
+border-radius: 8px;
+font-weight: 600;
+cursor: pointer;
+transition: background-color 0.2s;
+margin-top: 1rem;
+}
+
+.registerButton:hover {
+background-color: #2a3663;
+}
+
+.registerButton:disabled {
+background-color: #c7d2fe;
+cursor: not-allowed;
+}
+
+.divider {
+display: flex;
+align-items: center;
+margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+content: "";
+flex: 1;
+border-bottom: 1px solid #e5e7eb;
+}
+
+.divider span {
+padding: 0 1rem;
+color: #6b7280;
+font-size: 0.875rem;
+}
+
+.loginLink {
+text-align: center;
+margin-top: 2rem;
+font-size: 0.875rem;
+color: #6b7280;
+}
+
+.loginLink a {
+color: var(--primary);
+font-weight: 600;
+text-decoration: none;
+}
+
+.loginLink a:hover {
+text-decoration: underline;
+}
+
+.registrationBackground {
+flex: 1;
+background: linear-gradient(135deg, var(--primary) 0%, #4b6cb7 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 2rem;
+position: relative;
+overflow: hidden;
+}
+
+.backgroundContent {
+color: white;
+max-width: 500px;
+position: relative;
+z-index: 2;
+}
+
+.backgroundContent h2 {
+font-size: 2rem;
+font-weight: 700;
+margin-bottom: 2rem;
+}
+
+.testimonials {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.testimonial {
+background-color: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+border-radius: 12px;
+padding: 1.5rem;
+}
+
+.testimonialContent {
+font-size: 1rem;
+line-height: 1.6;
+margin-bottom: 1.5rem;
+font-style: italic;
+}
+
+.testimonialAuthor {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.authorAvatar {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background-color: rgba(255, 255, 255, 0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 600;
+}
+
+.authorName {
+font-weight: 600;
+}
+
+.authorRole {
+font-size: 0.875rem;
+opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+    .registrationContainer {
+        flex-direction: column;
+    }
+
+    .registrationCard {
+        max-width: 100%;
+        padding: 2rem 1.5rem;
+    }
+
+    .registrationBackground {
+        min-height: 300px;
+        order: -1;
+    }
+
+    .backgroundContent {
+        text-align: center;
+    }
+
+    .backgroundContent h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .registrationCard {
+        padding: 1.5rem 1rem;
+    }
+
+    .pageTitle {
+        font-size: 1.5rem;
+    }
+
+    .registrationBackground {
+        padding: 1.5rem 1rem;
+    }
+
+    .testimonial {
+        padding: 1rem;
+    }
+}
+  
+  

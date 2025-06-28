@@ -1,0 +1,73 @@
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  DOCKER_REGISTRY: "charityplatformacr.azurecr.io"
+  IMAGE_NAME: "charity-platform-discovery-service"
+  IMAGE_TAG: "v1"
+  CONTAINER_NAME: "charity-platform-discovery-service"
+  DEPLOYMENT_NAME: "charity-platform-discovery-service"
+  ACR_NAME: "charityplatformacr"
+  RESOURCE_GROUP: "charity-fundraising-platform-rg"
+  AKS_CLUSTER_NAME: "charity-platform-cluster-v1"
+  AZURE_CLIENT_ID: "$CI_AZURE_CLIENT_ID"
+  AZURE_CLIENT_SECRET: "$CI_AZURE_CLIENT_SECRET"
+  AZURE_TENANT_ID: "$CI_AZURE_TENANT_ID"
+  AZURE_SUBSCRIPTION_ID: "$CI_AZURE_SUBSCRIPTION_ID"
+
+stages:
+  - build
+  - test
+  - security
+  - deploy
+
+cache:
+  key: trivy-windows
+  paths:
+    - trivy/
+
+before_script:
+  - az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+  - az account set --subscription $AZURE_SUBSCRIPTION_ID
+
+build:
+  stage: build
+  script:
+    - ./gradlew build
+    - docker build -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} .
+
+test:
+  stage: test
+  script:
+    - ./gradlew test
+
+sonar:
+  stage: test
+  script:
+    - ./gradlew sonar
+
+security_scan_fs:
+  stage: security
+  tags:
+    - windows
+  script:
+    - powershell -Command "if (-Not (Test-Path 'trivy\\trivy.exe')) { Invoke-WebRequest -Uri 'https://github.com/aquasecurity/trivy/releases/download/v0.51.1/trivy_0.51.1_windows-64bit.zip' -OutFile 'trivy.zip'; Expand-Archive -Path 'trivy.zip' -DestinationPath 'trivy' }"
+    - .\trivy\trivy.exe fs --exit-code 1 --scanners vuln --severity HIGH,CRITICAL --no-progress .
+
+security_scan_image:
+  stage: security
+  tags:
+    - windows
+  script:
+    - powershell -Command "if (-Not (Test-Path 'trivy\\trivy.exe')) { Invoke-WebRequest -Uri 'https://github.com/aquasecurity/trivy/releases/download/v0.51.1/trivy_0.51.1_windows-64bit.zip' -OutFile 'trivy.zip'; Expand-Archive -Path 'trivy.zip' -DestinationPath 'trivy' }"
+    - .\trivy\trivy.exe image ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} --exit-code 1 --severity HIGH,CRITICAL --no-progress
+  allow_failure: true
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  script:
+    - echo "Deploying to AKS..."
+    # - az acr login --name ${ACR_NAME}
+    # - docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+    # - az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME}
+    # - kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}

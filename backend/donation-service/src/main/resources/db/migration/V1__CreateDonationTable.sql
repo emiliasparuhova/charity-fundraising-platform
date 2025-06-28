@@ -1,0 +1,8 @@
+CREATE SCHEMA IF NOT EXISTS public;
+CREATE TABLE donation (
+    id BIGSERIAL PRIMARY KEY,
+    amount DOUBLE PRECISION NOT NULL,
+    date DATE,
+    charity_id BIGINT NOT NULL,
+    donor_id BIGINT NOT NULL
+);

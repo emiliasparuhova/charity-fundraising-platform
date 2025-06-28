@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: charity-platform-discovery-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: charity-platform-discovery-service
+  template:
+    metadata:
+      labels:
+        app: charity-platform-discovery-service
+    spec:
+      containers:
+        - name: charity-platform-discovery-service
+          image: charityplatformacr.azurecr.io/charity-platform-discovery-service:v1
+          ports:
+            - containerPort: 8761
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: azure
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 200m
+

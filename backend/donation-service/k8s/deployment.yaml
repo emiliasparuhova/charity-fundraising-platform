@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: charity-platform-donation-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: charity-platform-donation-service
+  template:
+    metadata:
+      labels:
+        app: charity-platform-donation-service
+    spec:
+      containers:
+        - name: charity-platform-donation-service
+          image: charityplatformacr.azurecr.io/charity-platform-donation-service:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: azure
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 200m

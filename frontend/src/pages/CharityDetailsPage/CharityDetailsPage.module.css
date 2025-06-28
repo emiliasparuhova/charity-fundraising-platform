@@ -1,0 +1,517 @@
+.charityDetailsPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10vh;
+    padding: 2rem 1rem;
+}
+
+/* Header Section */
+.charityHeader {
+    margin-bottom: 2rem;
+}
+
+.breadcrumbs {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.breadcrumbs a {
+    color: #6b7280;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.categoryBadge {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.charityTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.charityMeta {
+    display: flex;
+    gap: 1.5rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.metaIcon {
+    font-size: 1rem;
+}
+
+/* Main Content Layout */
+.charityContent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Photo Gallery */
+.photoGallery {
+    margin-bottom: 2rem;
+}
+
+.mainPhoto {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.mainPhotoImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholderImage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.thumbnail:hover {
+    opacity: 0.9;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.activeThumbnail {
+    border-color: var(--primary);
+}
+
+/* Description Section */
+.descriptionSection {
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    white-space: pre-line;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Progress Card */
+.progressCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.progressInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.raisedAmount {
+    display: flex;
+    flex-direction: column;
+}
+
+.amountValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.amountLabel {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.progressPercentage {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progressBarContainer {
+    width: 100%;
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progressBar {
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.donationsInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.donationsCount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donationsValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.donationsLabel {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Donation Card */
+.donationCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.donationTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.donationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.inactiveNotice {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.creatorLink {
+    color: #111827;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.amountOptions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.amountOption {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.amountOption:hover {
+    border-color: var(--primary);
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+.activeAmount {
+    border-color: var(--primary);
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+}
+
+.customAmount {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.customAmount label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.customAmountInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currencySymbol {
+    position: absolute;
+    left: 1rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.customAmountInput input {
+    width: 100%;
+    padding: 0.75rem;
+    padding-left: 2rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.customAmountInput input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.donateButton {
+    padding: 0.875rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.donateButton:hover {
+    background-color: #2a3663;
+}
+
+.donateButton:disabled {
+    background-color: #c7d2fe;
+    cursor: not-allowed;
+}
+
+.secureInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+
+.contactCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contactTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.75rem;
+}
+
+.contactText {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.contactButton {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.contactButton:hover {
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+.loadingContainer,
+.errorContainer {
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    text-align: center;
+    padding: 2rem;
+}
+
+.loadingSpinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(99, 102, 241, 0.1);
+    border-left-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.errorIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.errorContainer h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.errorContainer p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.backButton {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.backButton:hover {
+    background-color: #2a3663;
+}
+
+@media (max-width: 1024px) {
+    .charityContent {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+
+    .progressCard,
+    .donationCard {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .charityTitle {
+        font-size: 2rem;
+    }
+
+    .mainPhoto {
+        height: 300px;
+    }
+
+    .charityMeta {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .charityDetailsPage {
+        padding: 1rem;
+    }
+
+    .charityTitle {
+        font-size: 1.75rem;
+    }
+
+    .mainPhoto {
+        height: 250px;
+    }
+
+    .amountOptions {
+        grid-template-columns: 1fr;
+    }
+}

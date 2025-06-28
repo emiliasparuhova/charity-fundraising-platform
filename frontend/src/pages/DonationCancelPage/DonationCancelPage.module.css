@@ -1,0 +1,98 @@
+.cancelContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+    background-color: #f9fafb;
+}
+
+.cancelContent {
+    background-color: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    margin-top: 10vh;
+}
+
+.cancelIcon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    color: #ef4444;
+}
+
+.iconSvg {
+    width: 100%;
+    height: 100%;
+}
+
+.cancelTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.cancelMessage {
+    color: #4b5563;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.primaryButton,
+.secondaryButton {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.primaryButton {
+    background-color: var(--primary);
+    color: white;
+}
+
+.primaryButton:hover {
+    background-color: #2a3663;
+}
+
+.secondaryButton {
+    background-color: white;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+}
+
+.secondaryButton:hover {
+    background-color: #f9fafb;
+}
+
+@media (max-width: 640px) {
+    .cancelContent {
+        padding: 1.5rem;
+    }
+
+    .cancelTitle {
+        font-size: 1.5rem;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: 100%;
+    }
+}

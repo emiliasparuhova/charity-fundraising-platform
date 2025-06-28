@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: charity-platform-user-service
+spec:
+  selector:
+    app: charity-platform-user-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

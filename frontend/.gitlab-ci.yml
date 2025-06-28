@@ -1,0 +1,50 @@
+variables:
+  DOCKER_REGISTRY: "charityplatformacr.azurecr.io"
+  IMAGE_NAME: "charity-fundraising-frontend"
+  IMAGE_TAG: "v1"
+  ACR_NAME: "charityplatformacr"
+  WEB_APP_NAME: "charity-fundraising-frontend"
+  RESOURCE_GROUP: "charity-fundraising-platform-rg"
+  AZURE_CLIENT_ID: "$CI_AZURE_CLIENT_ID"
+  AZURE_CLIENT_SECRET: "$CI_AZURE_CLIENT_SECRET"
+  AZURE_TENANT_ID: "$CI_AZURE_TENANT_ID"
+  AZURE_SUBSCRIPTION_ID: "$CI_AZURE_SUBSCRIPTION_ID"
+
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+  - az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+  - az account set --subscription $AZURE_SUBSCRIPTION_ID
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+    - docker build -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} .
+
+test:
+  stage: test
+  image: cypress/browsers:node-18.12.0-chrome-106
+  script:
+    - npm ci
+    - npx cypress install
+    - npx cypress run
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  script:
+    - az acr login --name ${ACR_NAME}
+    - docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+    - >
+        az webapp config container set
+        --name ${WEB_APP_NAME}
+        --resource-group ${RESOURCE_GROUP}
+        --docker-custom-image-name ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+        --docker-registry-server-url https://${DOCKER_REGISTRY}
+    - az webapp restart --name ${WEB_APP_NAME} --resource-group ${RESOURCE_GROUP}
